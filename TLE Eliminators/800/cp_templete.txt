@@ -1,0 +1,42 @@
+This is the cpp.json file that is to be created / modified
+{
+	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+    "CP": {
+        "prefix": "cp",
+        "body": [
+            "#include <bits/stdc++.h>",
+            "",
+            "using namespace std;",
+            "using vi = vector<int>;",
+            "",
+            
+            "void solve() {",
+            "    int n, k;",
+            "    cin >> n >> k;",
+            "    vi arr(n);",
+            "    for (int i = 0; i < n; i++) {",
+            "        cin >> arr[i];",
+            "    }",
+            "    // Code here",
+            "}",
+            "",
+            "int main() {",
+            "    ios::sync_with_stdio(false);",
+            "    cin.tie(0);",
+            "    // #ifndef ONLINE_JUDGE",
+            "    // freopen(\"input.txt\",\"r\",stdin);",
+            "    // freopen(\"output.txt\",\"w\",stdout);",
+            "    // #endif",
+            "    long long int t; // use them if the test cases are more than 1, else remove the while",
+            "    cin >> t;",
+            "    while (t--) solve();",
+            "}"
+        ],
+        "description": "C++ Boilerplate with updated Solve Function and input array"
+    }
+
+}

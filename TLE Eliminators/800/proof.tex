@@ -1,0 +1,122 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+
+\section*{Problem Statement}
+Let $x$ be a string of length $n$ and $s$ be a string of length $m$, where both strings consist of lowercase Latin letters. You are allowed to repeatedly append the current string $x$ to itself (i.e., $x \leftarrow x + x$). After each operation, the length of $x$ doubles.
+
+We want to determine the minimum number of operations after which $s$ appears as a substring of $x$, or conclude that this is impossible. It is given that:
+\[
+n \cdot m \leq 25
+\]
+
+\section*{Goal}
+We aim to prove the following:
+
+\textit{If $s$ can appear in $x$ as a substring after some number of self-appending operations, then it will necessarily appear within 5 operations (i.e., when $\lvert x \rvert = 32n$).}
+
+\section*{Operation Growth}
+Each operation doubles the length of $x$. After $k$ operations, the length of $x$ becomes:
+\[
+|x_k| = n \cdot 2^k
+\]
+
+Thus, the growth of $x$ over the first few operations is:
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+Operations & Length of $x$ \\
+\hline
+0 & $n$ \\
+1 & $2n$ \\
+2 & $4n$ \\
+3 & $8n$ \\
+4 & $16n$ \\
+5 & $32n$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{Key Insight: Repetition Structure}
+Let $x_0$ be the original string. Each subsequent $x_k$ is a repetition of $x_0$:
+\[
+x_k = \underbrace{x_0 \; x_0 \; \dots \; x_0}_{2^k \text{ times}}
+\]
+
+Therefore, all versions of $x$ are made solely by concatenating copies of the original $x_0$, and any substring that appears in $x_k$ must consist of parts (or overlaps) of these repeated $x_0$ segments.
+
+\section*{What Must Be Guaranteed}
+To ensure that $s$ appears as a substring of $x_k$:
+\begin{enumerate}
+    \item $x_k$ must be at least as long as $s$ (i.e., $|x_k| \geq m$).
+    \item $x_k$ must be long enough to allow all possible \textbf{alignments} of $s$ to be tried — especially those where $s$ spans across boundaries between adjacent repetitions of $x_0$.
+\end{enumerate}
+
+\section*{Worst-Case Overlap Alignment}
+Suppose $s$ starts near the end of one repetition of $x_0$ and ends at the beginning of the next. In such a case, $s$ overlaps multiple repetitions of $x_0$. To handle this, $x_k$ must be long enough to simulate a sliding window of size $m$ over all possible positions.
+
+If $k$ is the number of repetitions of $x_0$, then the total length of $x$ is $k \cdot n$. The number of $m$-length substrings available in such a string is:
+\[
+k \cdot n - m + 1
+\]
+
+To ensure that $s$ is \textbf{guaranteed} to appear (if possible), a sufficient condition is:
+\[
+k \cdot n \geq m + n - 1
+\]
+
+Even more conservatively, we can demand:
+\[
+k \cdot n \geq 2m
+\]
+which ensures enough overlap between repetitions to cover all alignment positions.
+
+\section*{Using the Problem Constraint}
+
+We are given:
+\[
+n \cdot m \leq 25
+\Rightarrow m \leq \frac{25}{n}
+\]
+
+We require:
+\[
+32n \geq 2m \Rightarrow m \leq 16n
+\]
+
+This always holds because:
+\[
+\frac{25}{n} \leq 16n \quad \text{for all } n \in [1, 25]
+\]
+
+Proof of this inequality:
+
+Multiply both sides:
+\[
+25 \leq 16n^2 \Rightarrow n^2 \geq \frac{25}{16} = 1.5625 \Rightarrow n \geq \sqrt{1.5625} \approx 1.25
+\]
+
+Since $n$ is a positive integer and $n \geq 1$, the inequality always holds.
+
+\section*{Conclusion}
+
+After 5 operations, the string $x$ has length $32n$, which satisfies:
+\begin{itemize}
+    \item $32n \geq 2m$
+    \item Covers all possible alignments of $s$ of length $m$
+    \item Adheres to the global constraint $n \cdot m \leq 25$
+\end{itemize}
+
+Thus, if $s$ does not appear as a substring of $x$ after 5 operations, it will never appear in any longer repetition of $x$.
+
+\[
+\boxed{
+    \text{If } s \text{ can appear in } x, \text{ it will appear within 5 operations (i.e., length } 32n\text{).}
+}
+\]
+
+\end{document}
