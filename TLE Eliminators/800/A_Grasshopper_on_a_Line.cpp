@@ -4,13 +4,16 @@ using namespace std;
 using vi = vector<int>;
 
 void solve() {
-    int n, k ,x;
-    cin >> n >> k >>x;
-    vi arr(n);
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+    int x, k;
+    cin >> x >> k;
+    if ( x%k !=0){
+        cout<<1<<"\n";
+        cout<<x<<"\n";
+    }else{
+        // x is div by k, then x-1 will not be div by k
+        cout<<2<<"\n";
+        cout<<x-1<<" " <<1<<"\n";
     }
-    // Code here
 }
 
 int main() {
