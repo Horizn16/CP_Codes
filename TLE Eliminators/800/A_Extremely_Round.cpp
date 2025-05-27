@@ -3,14 +3,17 @@
 using namespace std;
 using vi = vector<int>;
 
+// This code actually counts the number of (digits-1)*9 + the last digit remaining, since the round numbers have only 1 digit, they are the multiples of 10. Its like the exponent of 10 is there.
 void solve() {
-    int n ;
-    cin >> n ;
-    vi arr(n);
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+    int n;
+    cin >> n;
+    
+    int cnt=0;
+    while(n>=10){// This ensures that the loop breaks when the n value is below the 10, the value's coefficient is found, this makes the rest of the stuff to be added, along with the exponent. Also this is made to ensure that the number once going less than 10, the remaining is added. If given to 0, the extra 9 is added. There is 9 good from 1-9; 10-99;100-999; and so on. So count from the 
+        cnt+=9;
+        n/=10;
     }
-    // Code here
+    cout<<cnt+n<<"\n";
 }
 
 int main() {

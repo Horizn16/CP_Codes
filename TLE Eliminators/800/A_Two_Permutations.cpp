@@ -7,7 +7,17 @@ void solve() {
     int n , a , b ;
     cin >> n >> a >> b;
     
-    // Code here
+    // If a+b>=n-1, then p and q will be same, since the matching will overlap, so this works if n=a=b
+    if (a+b>=n-1){
+        if (a==n && b==n){
+            cout<<"Yes"<<"\n";
+        }else{
+            cout<<"No"<<"\n";
+        }
+    }else{
+        cout<<"Yes"<<"\n";
+    }
+
 }
 
 int main() {

@@ -3,14 +3,24 @@
 using namespace std;
 using vi = vector<int>;
 
-void solve() {
+void solve(){
     int n ;
     cin >> n ;
     vi arr(n);
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    // Code here
+    if (arr[0]==arr[n-1]){
+        cout<<"NO"<<"\n";
+    }else{
+        //Atleast 2 distinct elements
+        cout<<"YES"<<"\n";
+        cout<<arr[n-1]<<" "<<arr[0]<<" ";
+        for (int i=1; i<n-1; i++){
+            cout<<arr[i]<<" ";
+        }
+        cout<<"\n";
+    }
 }
 
 int main() {

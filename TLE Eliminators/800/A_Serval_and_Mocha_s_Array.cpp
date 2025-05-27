@@ -2,6 +2,7 @@
 
 using namespace std;
 using vi = vector<int>;
+int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); } 
 
 void solve() {
     int n;
@@ -10,7 +11,19 @@ void solve() {
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    // Code here
+    bool flag=false;
+    for (int i=0; i<n; i++){
+        for(int j=i; j<n; j++){//It is prefix, the subarrays from the start of the array, Also, since the gcd is symmetric, so the checking of the (i,j) if (j,i) is done is redundant.
+            if (gcd(arr[i],arr[j])<=2){
+                // cout<<"Yes"<<"\n";// This can be commented out , if printing is to be done later.
+                flag=true;
+                break;
+            }
+        }
+        // if (flag) break;
+    }
+    if (!flag) cout<<"No"<<"\n";
+    else cout<<"Yes"<<"\n";
 }
 
 int main() {

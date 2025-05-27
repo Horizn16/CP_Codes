@@ -1,0 +1,27 @@
+🤔 So what’s the difference in effect or result?
+✅ When to use j = i:
+If you only care about elements from index i forward
+
+e.g., comparing arr[i] to all suffix elements
+
+If the operation is symmetric, like gcd(a, b) == gcd(b, a) — so no need to check both (i, j) and (j, i)
+
+You're trying to avoid duplicate comparisons
+
+✅ When to use j = 0 (with safeguards):
+If you want to check all pairs regardless of index order
+
+But you’ll need to manually skip repeated comparisons, e.g.:
+
+cpp
+Copy
+Edit
+if (j < i) continue; // Or use a set to track checked pairs
+⚠️ Performance Implication
+Using j = 0 with manual checks is less efficient:
+
+More iterations
+
+More condition checks or more memory (if using sets to track pairs)
+
+Redundant work unless the operation is asymmetric (e.g., a - b is not the same as b - a)
