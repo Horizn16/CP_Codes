@@ -8,7 +8,19 @@ void solve() {
     cin >> n >> k ;
     string s;
     cin>> s;
-    // Code here
+    // If k < odd freq -1, then cannot make palindrome
+    // If k> no . of odd freq, then convert all odds to even , then the remaining even, if k-odds is even, no issue, if odd, then it is represented as 2*x+1, so no issue again, can have atleast 1 odd
+    map <char,int> mp;
+    for (auto ch:s){
+        mp[ch]++;
+    }
+    int odds=0;
+    for (auto i: mp){
+        if ((i.second)&1)
+            odds++;
+    }
+    if (k<odds-1) cout<< "NO"<<"\n";
+    else cout<<"YES"<<"\n";
 }
 
 int main() {

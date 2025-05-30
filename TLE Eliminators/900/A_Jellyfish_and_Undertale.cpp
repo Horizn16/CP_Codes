@@ -10,7 +10,13 @@ void solve() {
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
+    long long res = b; 
+
+    for (int i = 0; i < n; i++) {
+        res += min(arr[i], a - 1);// For this either the time increases by x_i or a-1
+    }
     
+    cout << res << "\n";
 }
 
 int main() {

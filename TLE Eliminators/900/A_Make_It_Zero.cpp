@@ -2,6 +2,10 @@
 
 using namespace std;
 using vi = vector<int>;
+#define ll long long
+
+bool odd(ll num) { return ((num & 1) == 1); }
+bool even(ll num) { return ((num & 1) == 0); }
 
 void solve() {
     int n ;
@@ -10,7 +14,17 @@ void solve() {
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-    // Code here
+    if (even(n)){
+        cout<<2<<"\n";
+        cout<<1<<" "<<n<<"\n";
+        cout<<1<<" "<<n<<"\n";
+    }else{
+        cout<<4<<"\n";// Even subsegment
+        cout<<1<<" "<<n-1<<"\n";
+        cout<<1<<" "<<n-1<<"\n";
+        cout<<n-1<<" "<<n<<"\n";
+        cout<<n-1<<" "<<n<<"\n";
+    }
 }
 
 int main() {

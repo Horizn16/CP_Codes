@@ -4,9 +4,14 @@ using namespace std;
 using vi = vector<int>;
 
 void solve() {
-    int n , k , x;
+    long long n , k , x;
     cin >> n >> k >> x;
     
+    // The x should lie between the first k nat numbers and the sum of last k numbers 
+    long long low=(k*(k+1))/2;
+    long long  high=(n*(n+1)/2)-((n-k)*(n-k+1)/2);
+    if (x >= low && x<=high) cout <<"YES"<<"\n";
+    else cout<<"NO"<<"\n";
 }
 
 int main() {
