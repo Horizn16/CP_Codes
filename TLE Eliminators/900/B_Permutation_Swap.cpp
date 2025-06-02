@@ -1,26 +1,23 @@
 #include <bits/stdc++.h>
- 
+
 using namespace std;
 using vi = vector<int>;
- 
+
 void solve() {
-    int n, k;
-    cin>>n>>k;
-    vi arr(n);
-    for (int i = 0; i < n; i++){
-        cin>> arr[i];
+    int n ;
+    cin >> n ;
+    vi arr(n+1);
+    for (int i = 1; i <= n; i++) {
+        cin >> arr[i];
     }
-    bool flag=false;
-    for (int i: arr){
-        if (i ==k){
-            cout<<"YES"<<"\n";
-            flag=true;
-            break;
-        }
+    // gcd(a,b,c)= gcd(gcd(a,b),c)
+    int res=0;
+    for(int i=1; i<=n; i++){
+        res=gcd(abs(arr[i]-i),res);
     }
-    if (!flag) cout<<"NO"<<"\n";
+    cout<<res<<'\n';
 }
- 
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);

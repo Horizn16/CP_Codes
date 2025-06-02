@@ -1,26 +1,18 @@
 #include <bits/stdc++.h>
- 
+
 using namespace std;
 using vi = vector<int>;
- 
+
 void solve() {
-    int n, k;
-    cin>>n>>k;
+    int n ;
+    cin >> n ;
     vi arr(n);
-    for (int i = 0; i < n; i++){
-        cin>> arr[i];
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
     }
-    bool flag=false;
-    for (int i: arr){
-        if (i ==k){
-            cout<<"YES"<<"\n";
-            flag=true;
-            break;
-        }
-    }
-    if (!flag) cout<<"NO"<<"\n";
+    // Code here
 }
- 
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
